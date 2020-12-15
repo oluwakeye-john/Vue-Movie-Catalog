@@ -4,6 +4,11 @@ function getTitle(vm) {
     return typeof title === "function" ? title.call(vm) : title;
   }
 }
+
+export const setTitle = (value) => {
+  document.title = value;
+};
+
 export default {
   created() {
     const title = getTitle(this);

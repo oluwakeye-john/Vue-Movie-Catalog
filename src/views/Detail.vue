@@ -1,14 +1,19 @@
 <template>
   <div class="mx-3 md:mx-20 my-10">
     <div v-if="movie.id" class="flex flex-col sm:flex-row">
-      <img class="md:w-1/4 object-cover" :src="movieImage" />
+      <img class="hidden md:block md:w-1/4 object-cover" :src="movieImage" />
+      <img class="md:hidden md:w-1/4 object-cover" :src="movieImageAlt" />
 
       <div class="md:ml-10 mt-5 md:mt-0">
         <div
           class="md:mt-8 mt-3 mb-8 flex justify-between text-2xl align-middle"
         >
           <h1 class="font-bold">{{ movie.title }}</h1>
-          <span class="fas fa-heart" />
+          <span
+            @click="addToFavorites"
+            class="fas fa-heart cursor-pointer hover:text-secondary transition-colors duration-200"
+            :class="{ 'text-secondary': favorite }"
+          />
         </div>
 
         <div v-if="movie.genres.length" class="flex">
@@ -41,6 +46,7 @@
 <script>
 import { getMovieDetailRequest } from "../api";
 import Loader from "../components/loader";
+import storageContainer from "../storageContainer";
 
 const getMovie = async (id) => {
   try {
@@ -59,18 +65,33 @@ export default {
       default: "",
     },
   },
-  components: {
-    Loader,
-  },
   data() {
     return {
       fetching: false,
+      favorite: false,
       movie: {},
     };
   },
+  methods: {
+    addToFavorites() {
+      this.favorite = storageContainer.addToFavorites(this.movie);
+    },
+    checkFavorite() {
+      const resp = storageContainer.isFavorite(this.id);
+      console.log("got", resp);
+      this.favorite = resp;
+    },
+  },
+  components: {
+    Loader,
+  },
+
   computed: {
     movieImage() {
       return "https://image.tmdb.org/t/p/w500" + this.movie.poster_path;
+    },
+    movieImageAlt() {
+      return "https://image.tmdb.org/t/p/w500" + this.movie.backdrop_path;
     },
   },
   async created() {
@@ -78,6 +99,9 @@ export default {
     this.movie = await getMovie(this.id);
     document.title = this.movie.title;
     this.fetching = false;
+  },
+  mounted() {
+    this.checkFavorite();
   },
 };
 </script>
