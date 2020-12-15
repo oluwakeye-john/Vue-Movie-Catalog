@@ -1,6 +1,6 @@
 <template>
   <div
-    class="bg-primary text-gray-200 px-5 md:px-9 flex justify-between md:justify-start items-center"
+    class="text-gray-500 bg-primary px-5 md:px-9 flex justify-between md:justify-start items-center"
   >
     <div
       v-for="item in items"
@@ -10,7 +10,7 @@
       <router-link
         exact
         class="px-1 md:px-9 py-4 transition-colors duration-300 border-transparent border-b-2 text-sm"
-        active-class="border-secondary "
+        active-class="border-secondary text-gray-200"
         :to="item.link"
       >
         <span :class="item.icon" class="fas"></span>
