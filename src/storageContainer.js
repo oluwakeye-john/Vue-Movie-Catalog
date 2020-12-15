@@ -3,7 +3,10 @@ class StorageContainer {
 
   getFavorites() {
     const data = localStorage.getItem(this.key);
-    return JSON.parse(data);
+    if (data) {
+      return JSON.parse(data);
+    }
+    return [];
   }
 
   isFavorite(id) {
