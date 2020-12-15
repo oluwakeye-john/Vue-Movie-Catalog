@@ -7,11 +7,21 @@
 
 <script>
 import Header from "./components/header";
+import { mapState, mapActions } from "vuex";
 
 export default {
   name: "App",
   components: {
     Header,
+  },
+  computed: {
+    ...mapState(["popular"]),
+  },
+  methods: {
+    ...mapActions(["getPopularAction"]),
+  },
+  created() {
+    this.getPopularAction();
   },
 };
 </script>

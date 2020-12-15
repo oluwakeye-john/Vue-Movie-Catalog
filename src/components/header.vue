@@ -25,7 +25,7 @@
 const items = [
   { name: "Popular", icon: "fa-star", id: 0, link: "/" },
   { name: "Favorite", icon: "fa-heart", id: 1, link: "/favorite" },
-  { name: "Search", icon: "fa-search", id: 1, link: "/search" },
+  { name: "Search", icon: "fa-search", id: 2, link: "/search" },
 ];
 
 export default {
