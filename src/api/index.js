@@ -10,5 +10,5 @@ export const getPopularRequest = (page) => {
 };
 
 export const getMovieDetailRequest = (id) => {
-  return api.get(`/movie/${id}?api_key=${API_KEY}&language=en-US`);
+  return api.get(`/${id}?api_key=${API_KEY}&language=en-US`);
 };

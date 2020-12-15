@@ -1,10 +1,12 @@
 <template>
-  <div class="mb-8 hover:opacity-80 cursor-pointer transform duration-300">
-    <img class="object-cover rounded-md" :src="movieImage" />
-    <h1></h1>
-    <h3 class="text-lg font-bold text-black mt-2">{{ movie.title }}</h3>
-    <p class="text-sm">{{ movie.release_date }}</p>
-  </div>
+  <router-link :to="{ name: 'Detail', params: { id: movie.id } }">
+    <div class="mb-8 hover:opacity-80 cursor-pointer transform duration-300">
+      <img class="object-cover rounded-md" :src="movieImage" />
+      <h1></h1>
+      <h3 class="text-lg font-bold text-black mt-2">{{ movie.title }}</h3>
+      <p class="text-sm">{{ movie.release_date }}</p>
+    </div>
+  </router-link>
 </template>
 
 <script>

@@ -1,11 +1,9 @@
 <template>
-  <div class="home">
-    <div
-      class="grid sm:grid-cols-5 grid-cols-2 sm:gap-x-16 gap-x-4 mx-3 mt-10 sm:mx-10"
-    >
-      <div v-for="movie in popular" :key="movie.id">
-        <Card :movie="movie" />
-      </div>
+  <div
+    class="grid sm:grid-cols-5 grid-cols-2 sm:gap-x-12 gap-x-4 mx-3 sm:mx-20 mt-20"
+  >
+    <div v-for="movie in popular" :key="movie.id">
+      <Card :movie="movie" />
     </div>
   </div>
 </template>
