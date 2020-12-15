@@ -76,6 +76,7 @@ export default {
   async created() {
     this.fetching = true;
     this.movie = await getMovie(this.id);
+    document.title = this.movie.title;
     this.fetching = false;
   },
 };

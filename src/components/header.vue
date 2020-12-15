@@ -9,12 +9,12 @@
     >
       <router-link
         exact
-        class="px-1 md:px-9 py-5 transition-colors duration-300 border-transparent border-b-2"
+        class="px-1 md:px-9 py-4 transition-colors duration-300 border-transparent border-b-2 text-sm"
         active-class="border-secondary "
         :to="item.link"
       >
         <span :class="item.icon" class="fas"></span>
-        <p class="mt-2">{{ item.name }}</p>
+        <p class="mt-1">{{ item.name }}</p>
       </router-link>
     </div>
   </div>

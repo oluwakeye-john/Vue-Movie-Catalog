@@ -18,7 +18,7 @@ export default {
     ...mapState(["popular"]),
   },
   methods: {
-    ...mapActions(["getPopularAction"]),
+    ...mapActions(["getPopularAction", "getLandingImage"]),
   },
   created() {
     this.getPopularAction();

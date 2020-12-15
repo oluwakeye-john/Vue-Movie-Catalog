@@ -5,6 +5,9 @@ import store from "./store";
 
 import "./styles/index.css";
 
+import titleMixin from "./mixins/title-mixin";
+Vue.mixin(titleMixin);
+
 Vue.config.productionTip = false;
 
 new Vue({
