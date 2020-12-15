@@ -1,6 +1,6 @@
 <template>
   <div class="about">
-    <div v-if="favorites?.length">
+    <div v-if="favorites.length">
       <list>
         <div v-for="movie in favorites" :key="movie.id">
           <Card :movie="movie" />
