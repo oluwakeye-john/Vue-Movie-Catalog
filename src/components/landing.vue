@@ -1,7 +1,9 @@
 <template>
   <div class="landing-container flex items-center justify-center bg-primary">
-    <div class="z-10 text-center">
-      <h1 class="font-bold text-5xl font-mono text-white mb-5 content1">
+    <div class="z-10 text-center px-3">
+      <h1
+        class="font-bold text-4xl md:text-5xl font-mono text-white mb-5 content1"
+      >
         Discover your Movies
       </h1>
       <p class="text-gray-300 text-lg content2">

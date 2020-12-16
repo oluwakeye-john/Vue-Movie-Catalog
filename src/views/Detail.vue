@@ -1,8 +1,16 @@
 <template>
-  <div class="mx-3 md:mx-20 my-10">
+  <div class="mx-5 md:mx-20 my-10">
     <div v-if="movie.id" class="flex flex-col sm:flex-row">
-      <img class="hidden md:block md:w-1/4 object-cover" :src="movieImage" />
-      <img class="md:hidden md:w-1/4 object-cover" :src="movieImageAlt" />
+      <img
+        :alt="movie.title"
+        class="hidden md:block md:w-1/4 object-cover rounded-sm"
+        :src="movieImage"
+      />
+      <img
+        :alt="movie.title"
+        class="md:hidden md:w-1/4 object-cover rounded-sm"
+        :src="movieImageAlt"
+      />
 
       <div class="md:ml-10 mt-5 md:mt-0">
         <div
@@ -11,7 +19,7 @@
           <h1 class="font-bold">{{ movie.title }}</h1>
           <span
             @click="addToFavorites"
-            class="fas fa-heart cursor-pointer hover:text-secondary transition-colors duration-200"
+            class="fas fa-heart cursor-pointer transition-colors duration-200"
             :class="{ 'text-secondary': favorite }"
           />
         </div>

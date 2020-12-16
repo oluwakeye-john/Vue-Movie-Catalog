@@ -3,7 +3,11 @@
     <div
       class="mb-8 hover:opacity-90 cursor-pointer transform duration-300 relative"
     >
-      <img class="object-cover rounded-md" :src="movieImage" />
+      <img
+        :alt="movie.title"
+        class="object-cover rounded-md"
+        :src="movieImage"
+      />
       <h1></h1>
       <h3 class="text-lg font-bold text-black mt-2">{{ movie.title }}</h3>
       <p class="text-sm">{{ movie.release_date }}</p>
