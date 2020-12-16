@@ -22,6 +22,7 @@
 </template>
 
 <script>
+import notFound from "../assets/not_found.jpg";
 export default {
   name: "Card",
   props: {
@@ -32,8 +33,12 @@ export default {
   },
   computed: {
     movieImage() {
+      if (this.movie.poster_path) {
+        return "https://image.tmdb.org/t/p/w500" + this.movie.poster_path;
+      } else {
+        return notFound;
+      }
       //   return "https://image.tmdb.org/t/p/w500" + this.movie.backdrop_path;
-      return "https://image.tmdb.org/t/p/w500" + this.movie.poster_path;
     },
   },
 };

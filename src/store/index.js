@@ -1,13 +1,22 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import { getMovieDetailRequest, getPopularRequest } from "../api";
-import { GET_POPULAR, GET_HERO } from "./types";
+import {
+  getMovieDetailRequest,
+  getPopularRequest,
+  searchRequest,
+} from "../api";
+import { GET_POPULAR, GET_HERO, GET_SEARCH, SET_IS_SEARCHING } from "./types";
 
 Vue.use(Vuex);
 
 const state = {
   popular: [],
   hero: {},
+  search: {
+    input: "",
+    results: [],
+    fetching: false,
+  },
 };
 
 const mutations = {
@@ -20,6 +29,12 @@ const mutations = {
   [GET_HERO](state, payload) {
     state.hero = payload;
   },
+  [GET_SEARCH](state, payload) {
+    state.search = payload;
+  },
+  [SET_IS_SEARCHING](state, val) {
+    state.search.fetching = val;
+  },
 };
 
 const actions = {
@@ -29,10 +44,16 @@ const actions = {
     commit(GET_POPULAR, data);
   },
   async getHero({ commit }, id = "127585") {
-    // 127585
     const response = await getMovieDetailRequest(id);
     const data = response.data;
     commit(GET_HERO, data);
+  },
+  async getSearch({ commit }, input) {
+    commit(SET_IS_SEARCHING, true);
+    const response = await searchRequest(input);
+    const results = response.data.results;
+    commit(GET_SEARCH, { input, results });
+    commit(SET_IS_SEARCHING, false);
   },
 };
 

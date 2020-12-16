@@ -6,9 +6,17 @@ const api = axios.create({
 });
 
 export const getPopularRequest = (page) => {
-  return api.get(`/popular?api_key=${API_KEY}&language=en-US&page=${page}`);
+  return api.get(
+    `/movie/popular?api_key=${API_KEY}&language=en-US&page=${page}`
+  );
 };
 
 export const getMovieDetailRequest = (id) => {
-  return api.get(`/${id}?api_key=${API_KEY}&language=en-US`);
+  return api.get(`/movie/${id}?api_key=${API_KEY}&language=en-US`);
+};
+
+export const searchRequest = (val) => {
+  return api.get(
+    `/search/movie?api_key=${API_KEY}&query=${val}&language=en-US`
+  );
 };

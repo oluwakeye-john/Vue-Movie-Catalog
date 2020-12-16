@@ -40,7 +40,7 @@
           </div>
 
           <div class="flex items-center mr-10">
-            <span class="fas fa-calendar mr-2" /> {{ movie.release_date }}/10
+            <span class="fas fa-calendar mr-2" /> {{ movie.release_date }}
           </div>
         </div>
 
@@ -55,6 +55,7 @@
 import { getMovieDetailRequest } from "../api";
 import Loader from "../components/loader";
 import storageContainer from "../storageContainer";
+import notFound from "../assets/not_found.jpg";
 
 const getMovie = async (id) => {
   try {
@@ -96,10 +97,18 @@ export default {
 
   computed: {
     movieImage() {
-      return "https://image.tmdb.org/t/p/w500" + this.movie.poster_path;
+      if (this.movie.poster_path) {
+        return "https://image.tmdb.org/t/p/w500" + this.movie.poster_path;
+      } else {
+        return notFound;
+      }
     },
     movieImageAlt() {
-      return "https://image.tmdb.org/t/p/w500" + this.movie.backdrop_path;
+      if (this.movie.backdrop_path) {
+        return "https://image.tmdb.org/t/p/w500" + this.movie.backdrop_path;
+      } else {
+        return notFound;
+      }
     },
   },
   async created() {
